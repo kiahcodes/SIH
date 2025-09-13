@@ -1,13 +1,81 @@
 version: "3.1"
 
 rules:
+  # Greeting Rule
+  - rule: Say hello when greeted
+    steps:
+      - intent: greet
+      - action: utter_greet
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  # Goodbye Rule
+  - rule: Say goodbye when user says bye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
 
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  # Bot challenge rule
+  - rule: Answer when asked if bot
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  # Happy mood rule
+  - rule: Respond to happy mood
+    steps:
+      - intent: mood_great
+      - action: utter_happy
+
+  # Unhappy mood rule
+  - rule: Respond to unhappy mood
+    steps:
+      - intent: mood_unhappy
+      - action: utter_cheer_up
+      - action: utter_did_that_help
+
+  # Affirmation rule
+  - rule: User affirms after cheer up
+    steps:
+      - intent: affirm
+      - action: utter_happy
+
+  # Denial rule
+  - rule: User denies after cheer up
+    steps:
+      - intent: deny
+      - action: utter_goodbye
+
+  # Healthcare disease rules
+  - rule: Provide info about malaria
+    steps:
+      - intent: ask_malaria
+      - action: utter_malaria
+
+  - rule: Provide info about dengue
+    steps:
+      - intent: ask_dengue
+      - action: utter_dengue
+
+  - rule: Provide info about typhoid
+    steps:
+      - intent: ask_typhoid
+      - action: utter_typhoid
+
+  - rule: Provide info about cholera
+    steps:
+      - intent: ask_cholera
+      - action: utter_cholera
+
+  - rule: Provide info about covid
+    steps:
+      - intent: ask_covid
+      - action: utter_covid
+
+  - rule: Provide info about flu
+    steps:
+      - intent: ask_flu
+      - action: utter_flu
+
+  - rule: Provide info about measles
+    steps:
+      - intent: ask_measles
+      - action: utter_measles

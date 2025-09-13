@@ -1,30 +1,51 @@
 version: "3.1"
 
 stories:
+  - story: greet and ask malaria
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_malaria
+      - action: utter_malaria
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - story: greet and ask dengue
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_dengue
+      - action: utter_dengue
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - story: greet and ask typhoid
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_typhoid
+      - action: utter_typhoid
 
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - story: greet and ask cholera
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_cholera
+      - action: utter_cholera
+
+  - story: greet and ask covid
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_covid
+      - action: utter_covid
+
+  - story: greet and ask flu
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_flu
+      - action: utter_flu
+
+  - story: greet and ask measles
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_measles
+      - action: utter_measles

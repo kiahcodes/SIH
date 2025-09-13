@@ -15,7 +15,7 @@ message = ""
 translator_hi = Translator(to_lang='hi')
 
 def speak(text):
-    """Convert text to Hindi TTS and play"""
+    #Convert text to Hindi TTS and play
     tts = gTTS(text=translator_hi.translate(text), lang='hi')
     tts.save("welcome.mp3")
     song = AudioSegment.from_mp3("welcome.mp3")
@@ -25,9 +25,23 @@ def speak(text):
 r = requests.post('http://localhost:5002/webhooks/rest/webhook', json={"message": "Hello"})
 print("Bot says: ", end='')
 for i in r.json():
-    bot_message = i['text']
-    print(bot_message)
-speak(bot_message)
+    if 'text' in i:
+        bot_message = i['text']
+        print(bot_message)
+    else:
+        print("Bot response:", i)
+print("Bot says: ", end='')
+bot_message = ""
+for i in r.json():
+    if 'text' in i:
+        bot_message = i['text']
+        print(bot_message)
+    else:
+        print("Bot response:", i)  # debug print for non-text messages
+
+# Only speak if there is something to say
+if bot_message:
+    speak(bot_message)
 
 # Chat loop
 while bot_message.lower() not in ["bye", "thanks"]:

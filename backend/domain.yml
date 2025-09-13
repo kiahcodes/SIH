@@ -8,27 +8,84 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - ask_malaria
+  - ask_dengue
+  - ask_typhoid
+  - ask_cholera
+  - ask_covid
+  - ask_flu
+  - ask_measles
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+    - text: "Namaste! How are you feeling today?"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+    - text: "Don't worry, I am here to help. Stay strong."
+      image: "https://i.imgur.com/nGF1K8f.jpg"
 
   utter_did_that_help:
-  - text: "Did that help you?"
+    - text: "Did that make you feel better?"
 
   utter_happy:
-  - text: "Great, carry on!"
+    - text: "Great! Stay healthy and safe."
 
   utter_goodbye:
-  - text: "Bye"
+    - text: "Take care! Goodbye."
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+    - text: "Yes, I am your healthcare helper bot."
+
+  ## Healthcare responses
+  utter_malaria:
+    - text: |
+        Malaria
+        -Cause: Bite of infected female Anopheles mosquito.
+        - Symptoms: High fever, chills, sweating, headache.
+        - Precautions: Sleep under mosquito nets, keep surroundings clean, use mosquito repellents.
+
+  utter_dengue:
+    - text: |
+        Dengue
+        - Cause: Aedes aegypti mosquito bite.
+        - Symptoms: High fever, severe body pain, rashes, bleeding gums/nose.
+        - Precautions: Remove stagnant water, wear full clothes, avoid mosquito breeding.
+
+  utter_typhoid:
+    - text: |
+        Typhoid
+        - Cause: Contaminated food and water (Salmonella bacteria).
+        - Symptoms: High fever, weakness, stomach pain, loss of appetite.
+        - Precautions: Drink clean boiled water, wash hands, eat home-cooked hygienic food.
+
+  utter_cholera:
+    - text: |
+        Cholera
+        - Cause: Drinking water contaminated with *Vibrio cholerae* bacteria.
+        - Symptoms: Severe watery diarrhea, vomiting, dehydration.
+        - **Precautions**: Use clean drinking water, wash hands, cook food properly.
+
+  utter_covid:
+    - text: |
+        COVID-19
+        - Cause: Coronavirus (spread by droplets).
+        - Symptoms: Fever, cough, breathing difficulty, loss of taste/smell.
+        - Precautions: Wear mask, wash hands, maintain distance, get vaccinated.
+
+  utter_flu:
+    - text: |
+        Seasonal Flu
+        - Cause: Influenza virus.
+        - Symptoms: Fever, cold, cough, body pain.
+        - Precautions: Rest, drink fluids, cover mouth while coughing, avoid close contact.
+
+  utter_measles:
+    - text: |
+        Measles
+        - Cause: Measles virus (highly contagious).
+        - Symptoms: Fever, cough, red eyes, red rash all over body.
+        - Precautions: Vaccination (MMR), avoid contact with infected persons.
 
 session_config:
-  session_expiration_time: 60
+  session_exDengupiration_time: 60
   carry_over_slots_to_new_session: true

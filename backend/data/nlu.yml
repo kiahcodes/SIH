@@ -1,91 +1,99 @@
 version: "3.1"
 
 nlu:
-- intent: greet
-  examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+  - intent: greet
+    examples: |
+      - hello
+      - hi
+      - namaste
+      - hey
 
-- intent: goodbye
-  examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
+  - intent: goodbye
+    examples: |
+      - bye
+      - goodbye
+      - see you
+      - bye-bye
 
-- intent: affirm
-  examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+  - intent: affirm
+    examples: |
+      - yes
+      - correct
+      - absolutely
+      - sure
 
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+  - intent: deny
+    examples: |
+      - no
+      - not really
+      - never
+      - I don’t think so
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
+  - intent: mood_great
+    examples: |
+      - I am fine
+      - feeling good
+      - amazing
+      - great
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+  - intent: mood_unhappy
+    examples: |
+      - not good
+      - feeling sick
+      - very terrible
+      - I feel weak
 
-- intent: bot_challenge
-  examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+  - intent: bot_challenge
+    examples: |
+      - are you a bot?
+      - are you real?
+      - who are you?
+
+  - intent: ask_malaria
+    examples: |
+      - tell me about malaria
+      - what is malaria
+      - how does malaria spread
+      - malaria precautions
+
+  - intent: ask_dengue
+    examples: |
+      - tell me about dengue
+      - what is dengue
+      - dengue symptoms
+      - how to prevent dengue
+
+  - intent: ask_typhoid
+    examples: |
+      - what is typhoid
+      - tell me about typhoid
+      - typhoid precautions
+      - how does typhoid spread
+
+  - intent: ask_cholera
+    examples: |
+      - what is cholera
+      - cholera symptoms
+      - how cholera spreads
+      - cholera precautions
+
+  - intent: ask_covid
+    examples: |
+      - tell me about covid
+      - what is coronavirus
+      - how to protect from covid
+      - covid symptoms
+
+  - intent: ask_flu
+    examples: |
+      - what is flu
+      - flu symptoms
+      - common cold and flu
+      - how to prevent flu
+
+  - intent: ask_measles
+    examples: |
+      - what is measles
+      - measles symptoms
+      - measles in children
+      - measles prevention
