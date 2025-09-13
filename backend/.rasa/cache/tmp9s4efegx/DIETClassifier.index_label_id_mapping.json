@@ -1,0 +1,16 @@
+{
+  "0": "affirm",
+  "1": "ask_cholera",
+  "2": "ask_covid",
+  "3": "ask_dengue",
+  "4": "ask_flu",
+  "5": "ask_malaria",
+  "6": "ask_measles",
+  "7": "ask_typhoid",
+  "8": "bot_challenge",
+  "9": "deny",
+  "10": "goodbye",
+  "11": "greet",
+  "12": "mood_great",
+  "13": "mood_unhappy"
+}
