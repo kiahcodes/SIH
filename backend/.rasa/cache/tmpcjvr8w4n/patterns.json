@@ -1,0 +1,22 @@
+[
+  {
+    "name": "symptom",
+    "pattern": "(\\bfever\\b|\\bheadache\\b|\\bcough\\b|\\bcold\\b|\\bbody\\ pain\\b|\\bnausea\\b|\\bvomiting\\b|\\bdiarrhea\\b|\\bfatigue\\b|\\bweakness\\b|\\bdizziness\\b|\\bchest\\ pain\\b|\\bbreathing\\ difficulty\\b|\\bsore\\ throat\\b|\\brashes\\b|\\bswelling\\b|\\bback\\ pain\\b|\\bstomach\\ ache\\b|\\bmuscle\\ pain\\b|\\bjoint\\ pain\\b|\\bchills\\b|\\bsweating\\b)"
+  },
+  {
+    "name": "disease",
+    "pattern": "(\\bmalaria\\b|\\bdiabetes\\b|\\bhypertension\\b|\\bcholera\\b|\\bcancer\\b|\\bdengue\\b|\\btyphoid\\b|\\btuberculosis\\b|\\bCOVID\\-19\\b|\\bpneumonia\\b|\\bjaundice\\b|\\banemia\\b|\\bblood\\ pressure\\b|\\bcholesterol\\b|\\basthma\\b|\\bbronchitis\\b|\\bhepatitis\\b)"
+  },
+  {
+    "name": "medicine",
+    "pattern": "(\\bparacetamol\\b|\\bibuprofen\\b|\\baspirin\\b|\\bantibiotic\\b|\\bmetformin\\b|\\binsulin\\b|\\bamlodipine\\b|\\batenolol\\b|\\bchloroquine\\b|\\bdoxycycline\\b|\\bamoxicillin\\b|\\bazithromycin\\b|\\bomeprazole\\b)"
+  },
+  {
+    "name": "body_part",
+    "pattern": "(\\bhead\\b|\\bchest\\b|\\bstomach\\b|\\bback\\b|\\blegs\\b|\\barms\\b|\\bthroat\\b|\\bnose\\b|\\beyes\\b|\\bears\\b|\\bneck\\b|\\babdomen\\b|\\bjoints\\b|\\bmuscles\\b)"
+  },
+  {
+    "name": "injury_type",
+    "pattern": "(\\bcuts\\b|\\bwounds\\b|\\bburns\\b|\\bsprains\\b|\\bfractures\\b|\\bbruises\\b|\\bbleeding\\b|\\binjury\\b)"
+  }
+]

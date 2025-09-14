@@ -1,51 +1,291 @@
 version: "3.1"
 
 stories:
-  - story: greet and ask malaria
+  - story: basic greeting conversation
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: ask_malaria
-      - action: utter_malaria
+      - intent: mood_great
+      - action: utter_thank_response
+      - intent: goodbye
+      - action: utter_goodbye
 
-  - story: greet and ask dengue
+  - story: bot challenge
     steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: ask_dengue
-      - action: utter_dengue
+      - intent: bot_challenge
+      - action: utter_iamabot
 
-  - story: greet and ask typhoid
+  - story: single symptom reporting
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: ask_typhoid
-      - action: utter_typhoid
+      - intent: single_symptom
+        entities:
+          - symptom: "fever"
+      - slot_was_set:
+          - symptom_list: ["fever"]
+      - action: utter_single_symptom_diseases
+      - intent: deny
+      - action: utter_provide_diagnosis
 
-  - story: greet and ask cholera
+  - story: multiple symptoms diagnosis
     steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: ask_cholera
-      - action: utter_cholera
+      - intent: report_symptoms
+        entities:
+          - symptom: "fever"
+          - symptom: "headache"
+      - slot_was_set:
+          - symptom_list: ["fever", "headache"]
+      - action: action_check_symptoms_count
+      - action: utter_ask_more_symptoms
+      - intent: multiple_symptoms
+        entities:
+          - symptom: "body pain"
+          - symptom: "chills"
+      - slot_was_set:
+          - symptom_list: ["fever", "headache", "body pain", "chills"]
+      - action: action_diagnose_symptoms
+      - action: utter_provide_diagnosis
 
-  - story: greet and ask covid
+  - story: complete symptom reporting with diagnosis
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: ask_covid
-      - action: utter_covid
+      - intent: report_symptoms
+        entities:
+          - symptom: "fever"
+          - symptom: "vomiting"
+          - symptom: "headache"
+      - slot_was_set:
+          - symptom_list: ["fever", "vomiting", "headache"]
+      - action: action_diagnose_symptoms
+      - action: utter_provide_diagnosis
+      - intent: thank_you
+      - action: utter_thank_response
 
-  - story: greet and ask flu
+  - story: disease information request - malaria
     steps:
-      - intent: greet
-      - action: utter_greet
-      - intent: ask_flu
-      - action: utter_flu
+      - intent: ask_disease_info
+        entities:
+          - disease: "malaria"
+      - slot_was_set:
+          - suspected_disease: "malaria"
+      - action: utter_disease_info_malaria
 
-  - story: greet and ask measles
+  - story: disease information request - diabetes
+    steps:
+      - intent: ask_disease_info
+        entities:
+          - disease: "diabetes"
+      - slot_was_set:
+          - suspected_disease: "diabetes"
+      - action: utter_disease_info_diabetes
+
+  - story: disease check with confirmation
+    steps:
+      - intent: check_disease
+        entities:
+          - disease: "malaria"
+      - slot_was_set:
+          - suspected_disease: "malaria"
+      - action: utter_confirm_disease
+      - action: action_verify_disease
+      - intent: confirm_disease
+      - slot_was_set:
+          - confirmed_disease: true
+      - action: utter_treatment_info
+
+  - story: disease check with denial
+    steps:
+      - intent: check_disease
+        entities:
+          - disease: "diabetes"
+      - slot_was_set:
+          - suspected_disease: "diabetes"
+      - action: utter_confirm_disease
+      - action: action_verify_disease
+      - intent: deny_disease
+      - slot_was_set:
+          - confirmed_disease: false
+      - action: utter_ask_symptoms
+
+  - story: treatment request
+    steps:
+      - intent: ask_treatment
+        entities:
+          - disease: "hypertension"
+      - slot_was_set:
+          - suspected_disease: "hypertension"
+      - action: utter_treatment_info
+      - action: utter_disclaimer
+
+  - story: ayurvedic remedy request
+    steps:
+      - intent: ask_ayurvedic_remedy
+        entities:
+          - disease: "diabetes"
+      - action: utter_ayurvedic_remedies
+
+  - story: pregnancy care information
+    steps:
+      - intent: pregnancy_care
+        entities:
+          - trimester: "first trimester"
+      - slot_was_set:
+          - trimester: "first trimester"
+      - action: utter_pregnancy_care
+
+  - story: newborn care guidance
+    steps:
+      - intent: newborn_care
+      - action: utter_newborn_care
+
+  - story: first aid for cuts
+    steps:
+      - intent: first_aid
+        entities:
+          - injury_type: "cuts"
+      - slot_was_set:
+          - injury_type: "cuts"
+      - action: utter_first_aid_cuts
+
+  - story: first aid for burns
+    steps:
+      - intent: first_aid
+        entities:
+          - injury_type: "burns"
+      - slot_was_set:
+          - injury_type: "burns"
+      - action: utter_first_aid_burns
+
+  - story: first aid for sprains
+    steps:
+      - intent: first_aid
+        entities:
+          - injury_type: "sprains"
+      - slot_was_set:
+          - injury_type: "sprains"
+      - action: utter_first_aid_sprains
+
+  - story: hospital finding with location
+    steps:
+      - intent: find_hospital
+      - action: utter_find_hospital
+      - intent: provide_location
+        entities:
+          - location: "Ahmedabad"
+      - slot_was_set:
+          - user_location: "Ahmedabad"
+      - action: action_find_nearest_hospital
+      - action: utter_hospital_info
+
+  # - story: emergency help request
+  #   steps:
+  #     - intent: emergency_help
+  #     - action: utter_emergency_response
+  #     - action: action_emergency_protocol
+
+  - story: medicine dosage inquiry
+    steps:
+      - intent: ask_medicine_dosage
+        entities:
+          - medicine: "paracetamol"
+      - action: utter_medicine_dosage
+      - action: utter_disclaimer
+
+  - story: complex symptom analysis with location
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: ask_measles
-      - action: utter_measles
+      - intent: multiple_symptoms
+        entities:
+          - symptom: "fever"
+          - symptom: "chills"
+          - symptom: "sweating"
+      - slot_was_set:
+          - symptom_list: ["fever", "chills", "sweating"]
+      - action: action_diagnose_symptoms
+      - intent: provide_location
+        entities:
+          - location: "Gujarat"
+      - slot_was_set:
+          - user_location: "Gujarat"
+      - action: utter_provide_diagnosis
+      - intent: ask_treatment
+      - action: utter_treatment_info
+
+  - story: unhappy mood with symptoms
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - intent: report_symptoms
+        entities:
+          - symptom: "headache"
+          - symptom: "fatigue"
+      - slot_was_set:
+          - symptom_list: ["headache", "fatigue"]
+      - action: action_diagnose_symptoms
+      - action: utter_provide_diagnosis
+      - intent: ask_ayurvedic_remedy
+      - action: utter_ayurvedic_remedies
+
+  - story: disease information with causes and precautions
+    steps:
+      - intent: ask_disease_info
+        entities:
+          - disease: "cholera"
+      - slot_was_set:
+          - suspected_disease: "cholera"
+      - action: utter_disease_info_cholera
+      - intent: ask_causes
+      - action: utter_disease_info_cholera
+      - intent: ask_precautions
+      - action: utter_disease_info_cholera
+
+  - story: symptom details with body part
+    steps:
+      - intent: provide_symptom_details
+        entities:
+          - symptom: "pain"
+          - body_part: "chest"
+      - slot_was_set:
+          - symptom_list: ["chest pain"]
+      - action: action_diagnose_symptoms
+      - action: utter_provide_diagnosis
+
+  - story: complete medical consultation flow
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: report_symptoms
+        entities:
+          - symptom: "fever"
+          - symptom: "nausea"
+      - slot_was_set:
+          - symptom_list: ["fever", "nausea"]
+      - action: utter_ask_more_symptoms
+      - intent: affirm
+      - intent: multiple_symptoms
+        entities:
+          - symptom: "diarrhea"
+          - symptom: "dehydration"
+      - slot_was_set:
+          - symptom_list: ["fever", "nausea", "diarrhea", "dehydration"]
+      - action: action_diagnose_symptoms
+      - action: utter_provide_diagnosis
+      - intent: ask_treatment
+      - action: utter_treatment_info
+      - intent: find_hospital
+      - action: utter_find_hospital
+      - intent: provide_location
+        entities:
+          - location: "Delhi"
+      - slot_was_set:
+          - user_location: "Delhi"
+      - action: action_find_nearest_hospital
+      - action: utter_hospital_info
+      - intent: thank_you
+      - action: utter_thank_response
+      - intent: goodbye
+      - action: utter_goodbye

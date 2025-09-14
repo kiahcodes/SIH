@@ -1,3 +1,94 @@
+# version: "3.1"
+
+# intents:
+#   - greet
+#   - goodbye
+#   - affirm
+#   - deny
+#   - mood_great
+#   - mood_unhappy
+#   - bot_challenge
+#   - ask_malaria
+#   - ask_dengue
+#   - ask_typhoid
+#   - ask_cholera
+#   - ask_covid
+#   - ask_flu
+#   - ask_measles
+
+# responses:
+#   utter_greet:
+#     - text: "Namaste! How are you feeling today?"
+
+#   utter_cheer_up:
+#     - text: "Don't worry, I am here to help. Stay strong."
+#       image: "https://i.imgur.com/nGF1K8f.jpg"
+
+#   utter_did_that_help:
+#     - text: "Did that make you feel better?"
+
+#   utter_happy:
+#     - text: "Great! Stay healthy and safe."
+
+#   utter_goodbye:
+#     - text: "Take care! Goodbye."
+
+#   utter_iamabot:
+#     - text: "Yes, I am your healthcare helper bot."
+
+#   ## Healthcare responses
+#   utter_malaria:
+#     - text: |
+#         Malaria
+#         -Cause: Bite of infected female Anopheles mosquito.
+#         - Symptoms: High fever, chills, sweating, headache.
+#         - Precautions: Sleep under mosquito nets, keep surroundings clean, use mosquito repellents.
+
+#   utter_dengue:
+#     - text: |
+#         Dengue
+#         - Cause: Aedes aegypti mosquito bite.
+#         - Symptoms: High fever, severe body pain, rashes, bleeding gums/nose.
+#         - Precautions: Remove stagnant water, wear full clothes, avoid mosquito breeding.
+
+#   utter_typhoid:
+#     - text: |
+#         Typhoid
+#         - Cause: Contaminated food and water (Salmonella bacteria).
+#         - Symptoms: High fever, weakness, stomach pain, loss of appetite.
+#         - Precautions: Drink clean boiled water, wash hands, eat home-cooked hygienic food.
+
+#   utter_cholera:
+#     - text: |
+#         Cholera
+#         - Cause: Drinking water contaminated with *Vibrio cholerae* bacteria.
+#         - Symptoms: Severe watery diarrhea, vomiting, dehydration.
+#         - **Precautions**: Use clean drinking water, wash hands, cook food properly.
+
+#   utter_covid:
+#     - text: |
+#         COVID-19
+#         - Cause: Coronavirus (spread by droplets).
+#         - Symptoms: Fever, cough, breathing difficulty, loss of taste/smell.
+#         - Precautions: Wear mask, wash hands, maintain distance, get vaccinated.
+
+#   utter_flu:
+#     - text: |
+#         Seasonal Flu
+#         - Cause: Influenza virus.
+#         - Symptoms: Fever, cold, cough, body pain.
+#         - Precautions: Rest, drink fluids, cover mouth while coughing, avoid close contact.
+
+#   utter_measles:
+#     - text: |
+#         Measles
+#         - Cause: Measles virus (highly contagious).
+#         - Symptoms: Fever, cough, red eyes, red rash all over body.
+#         - Precautions: Vaccination (MMR), avoid contact with infected persons.
+
+# session_config:
+#   session_exDengupiration_time: 60
+#   carry_over_slots_to_new_session: true
 version: "3.1"
 
 intents:
@@ -8,84 +99,414 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - ask_malaria
-  - ask_dengue
-  - ask_typhoid
-  - ask_cholera
-  - ask_covid
-  - ask_flu
-  - ask_measles
+  - report_symptoms
+  - ask_disease_info
+  - check_disease
+  - ask_treatment
+  - ask_causes
+  - ask_precautions
+  - ask_ayurvedic_remedy
+  - find_hospital
+  - emergency_help
+  - pregnancy_care
+  - newborn_care
+  - first_aid
+  - ask_medicine_dosage
+  - provide_symptom_details
+  - provide_location
+  - single_symptom
+  - multiple_symptoms
+  - confirm_disease
+  - deny_disease
+  - thank_you
+
+entities:
+  - symptom
+  - disease
+  - medicine
+  - body_part
+  - location
+  - injury_type
+  - trimester
+  - age_group
+
+slots:
+  symptom_list:
+    type: list
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: symptom
+
+  suspected_disease:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: disease
+
+  user_location:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: location
+
+  confirmed_disease:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_intent
+        intent: confirm_disease
+        value: true
+      - type: from_intent
+        intent: deny_disease
+        value: false
+
+  injury_type:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: injury_type
+
+  trimester:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: trimester
+
+  awaiting_more_symptoms:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
 
 responses:
   utter_greet:
-    - text: "Namaste! How are you feeling today?"
-
-  utter_cheer_up:
-    - text: "Don't worry, I am here to help. Stay strong."
-      image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-    - text: "Did that make you feel better?"
-
-  utter_happy:
-    - text: "Great! Stay healthy and safe."
+    - text: "Hello! I'm your Medical Health Assistant. I can help you with:\n- Symptom-based diagnosis\n- Disease information\n- Treatment suggestions\n- First aid guidance\n- Pregnancy and newborn care\n- Finding nearest hospitals\n\nHow can I assist you today?"
+    - text: "Welcome to Medical Health Assistant! 🏥\n\nI can help with:\n• Checking symptoms\n• Disease information\n• Medicines & treatments\n• Emergency first aid\n• Healthcare guidance\n\nWhat health concern can I help you with?"
 
   utter_goodbye:
-    - text: "Take care! Goodbye."
+    - text: "Take care of your health! If you need any medical assistance, I'm here 24/7. Goodbye!"
+    - text: "Stay healthy! Remember to consult a healthcare professional for serious concerns. Goodbye!"
 
   utter_iamabot:
-    - text: "Yes, I am your healthcare helper bot."
+    - text: "I am a medical assistant bot powered by AI to help you with health-related queries and guidance."
 
-  ## Healthcare responses
-  utter_malaria:
-    - text: |
-        Malaria
-        -Cause: Bite of infected female Anopheles mosquito.
-        - Symptoms: High fever, chills, sweating, headache.
-        - Precautions: Sleep under mosquito nets, keep surroundings clean, use mosquito repellents.
+  utter_ask_symptoms:
+    - text: "Please describe your symptoms in detail. For example: fever, headache, cough, body pain, etc. The more information you provide, the better I can help."
+    - text: "What symptoms are you experiencing? Please list all of them (e.g., fever, nausea, fatigue, etc.)"
 
-  utter_dengue:
-    - text: |
-        Dengue
-        - Cause: Aedes aegypti mosquito bite.
-        - Symptoms: High fever, severe body pain, rashes, bleeding gums/nose.
-        - Precautions: Remove stagnant water, wear full clothes, avoid mosquito breeding.
+  utter_ask_more_symptoms:
+    - text: "I see you have {symptom_list}. Do you have any other symptoms? This will help me provide a more accurate assessment."
+    - text: "You mentioned {symptom_list}. Are there any additional symptoms you're experiencing?"
 
-  utter_typhoid:
-    - text: |
-        Typhoid
-        - Cause: Contaminated food and water (Salmonella bacteria).
-        - Symptoms: High fever, weakness, stomach pain, loss of appetite.
-        - Precautions: Drink clean boiled water, wash hands, eat home-cooked hygienic food.
+  utter_single_symptom_diseases:
+    - text: "Based on the symptom '{symptom_list}', here are possible conditions:\n• Malaria\n• Viral fever\n• Common cold\n• Dengue\n• Typhoid\n\nDo you have any other symptoms to narrow down the diagnosis?"
 
-  utter_cholera:
-    - text: |
-        Cholera
-        - Cause: Drinking water contaminated with *Vibrio cholerae* bacteria.
-        - Symptoms: Severe watery diarrhea, vomiting, dehydration.
-        - **Precautions**: Use clean drinking water, wash hands, cook food properly.
+  utter_provide_diagnosis:
+    - text: "Based on your symptoms: {symptom_list}\n\nMost probable conditions:\n1. **Malaria** - High probability if you have fever with chills\n2. **Viral infection** - Common with these symptoms\n3. **Dengue** - Possible if in endemic area\n\n⚠️ Please consult a doctor for proper diagnosis and treatment."
 
-  utter_covid:
+  utter_disease_info_malaria:
     - text: |
-        COVID-19
-        - Cause: Coronavirus (spread by droplets).
-        - Symptoms: Fever, cough, breathing difficulty, loss of taste/smell.
-        - Precautions: Wear mask, wash hands, maintain distance, get vaccinated.
+        **MALARIA - Complete Information:**
 
-  utter_flu:
-    - text: |
-        Seasonal Flu
-        - Cause: Influenza virus.
-        - Symptoms: Fever, cold, cough, body pain.
-        - Precautions: Rest, drink fluids, cover mouth while coughing, avoid close contact.
+        **Symptoms:**
+        • High fever with chills
+        • Sweating
+        • Headache
+        • Nausea and vomiting
+        • Muscle pain
+        • Fatigue
 
-  utter_measles:
+        **Causes:** Plasmodium parasites transmitted by infected mosquitoes
+
+        **Treatment:**
+        • Chloroquine (500mg initially, then as prescribed)
+        • Artemisinin-based therapy
+        • Primaquine for P. vivax
+
+        **Precautions:**
+        • Use mosquito nets
+        • Apply insect repellent
+        • Eliminate standing water
+
+        **Ayurvedic:** Neem, Tulsi, Giloy
+
+  utter_disease_info_diabetes:
     - text: |
-        Measles
-        - Cause: Measles virus (highly contagious).
-        - Symptoms: Fever, cough, red eyes, red rash all over body.
-        - Precautions: Vaccination (MMR), avoid contact with infected persons.
+        **DIABETES - Complete Information:**
+
+        **Symptoms:**
+        • Increased thirst and urination
+        • Unexplained weight loss
+        • Fatigue
+        • Blurred vision
+        • Slow healing wounds
+
+        **Causes:** 
+        • Type 1: Autoimmune
+        • Type 2: Insulin resistance
+
+        **Treatment:**
+        • Metformin (500-2000mg daily)
+        • Insulin therapy
+        • Blood sugar monitoring
+
+        **Precautions:**
+        • Maintain healthy weight
+        • Regular exercise
+        • Balanced diet
+
+        **Ayurvedic:** Bitter gourd, Fenugreek, Jamun
+
+  utter_disease_info_hypertension:
+    - text: |
+        **HYPERTENSION - Complete Information:**
+
+        **Symptoms:**
+        • Headache
+        • Shortness of breath
+        • Nosebleeds
+        • Chest pain
+        • Dizziness
+
+        **Causes:** High salt intake, obesity, stress, genetics
+
+        **Treatment:**
+        • Amlodipine (5-10mg daily)
+        • Atenolol (25-100mg daily)
+        • Lifestyle modifications
+
+        **Precautions:**
+        • Reduce salt intake
+        • Exercise regularly
+        • Manage stress
+
+        **Ayurvedic:** Arjuna bark, Ashwagandha, Garlic
+
+  utter_disease_info_cholera:
+    - text: |
+        **CHOLERA - Complete Information:**
+
+        **Symptoms:**
+        • Severe watery diarrhea
+        • Vomiting
+        • Dehydration
+        • Muscle cramps
+
+        **Causes:** Vibrio cholerae bacteria from contaminated water
+
+        **Treatment:**
+        • ORS (Oral Rehydration Solution)
+        • IV fluids for severe cases
+        • Doxycycline 300mg single dose
+
+        **Precautions:**
+        • Drink safe water
+        • Proper sanitation
+        • Hand hygiene
+
+        **Ayurvedic:** Kutaja, Bilva, stay hydrated
+
+  utter_ask_which_disease:
+    - text: "Which disease would you like to know about? I can provide information on:\n• Malaria\n• Diabetes\n• Hypertension\n• Cholera\n• Cancer\n• Diarrhea\nAnd many others."
+
+  utter_confirm_disease:
+    - text: "Do you think you have {suspected_disease}? Let me ask you about specific symptoms to verify."
+    - text: "You suspect {suspected_disease}. Can you tell me all the symptoms you're experiencing so I can help verify?"
+
+  utter_treatment_info:
+    - text: |
+        **Treatment for {suspected_disease}:**
+
+        **Medical Treatment:**
+        • Primary medication as per severity
+        • Supportive care
+        • Regular monitoring
+
+        **Dosage Guidelines:**
+        • Follow prescription strictly
+        • Complete full course
+        • Take with food if advised
+
+        ⚠️ Consult a doctor for proper prescription
+
+  utter_ayurvedic_remedies:
+    - text: |
+        **Ayurvedic Remedies:**
+
+        **For Immunity:** Tulsi, Ashwagandha, Giloy
+        **For Digestion:** Triphala, Ginger, Ajwain
+        **For Respiratory:** Mulethi, Vasaka, Turmeric
+        **For Diabetes:** Bitter gourd, Fenugreek
+        **For Joint Pain:** Shallaki, Guggulu
+
+        🌿 Use under guidance of Ayurvedic practitioner
+
+  utter_pregnancy_care:
+    - text: |
+        **Pregnancy Care Guidelines:**
+
+        **First Trimester (Weeks 1-12):**
+        • Take folic acid (400mcg daily)
+        • Avoid alcohol and smoking
+        • Gentle exercise
+        • Manage morning sickness
+
+        **Second Trimester (Weeks 13-27):**
+        • Regular checkups
+        • Balanced nutrition
+        • Monitor baby movements
+
+        **Third Trimester (Weeks 28-40):**
+        • Prepare for delivery
+        • Practice breathing exercises
+        • Monitor contractions
+
+        **Safety Tips:**
+        • Avoid heavy lifting
+        • Sleep on left side
+        • Stay hydrated
+        • Regular prenatal visits
+
+  utter_newborn_care:
+    - text: |
+        **Newborn Baby Care:**
+
+        **Hygiene:**
+        • Wash hands before handling
+        • Keep umbilical cord dry
+        • Bathe with warm water
+
+        **Feeding:**
+        • Breastfeed every 2-3 hours
+        • Ensure proper latching
+        • Burp after feeding
+
+        **Safety:**
+        • Sleep on back
+        • Room temperature 68-72°F
+        • No loose bedding
+        • Regular checkups
+
+        **Rural Area Tips:**
+        • Boil water for cleaning
+        • Keep baby warm
+        • Ensure ventilation
+        • Exclusive breastfeeding for 6 months
+
+  utter_first_aid_cuts:
+    - text: |
+        **First Aid for Cuts/Wounds:**
+
+        1. Clean wound with water
+        2. Apply pressure to stop bleeding
+        3. Apply antiseptic (Betadine/Dettol)
+        4. Cover with sterile bandage
+        5. Change dressing daily
+
+        🚨 Seek medical help for deep cuts or if bleeding doesn't stop
+
+  utter_first_aid_burns:
+    - text: |
+        **First Aid for Burns:**
+
+        1. Cool with running water (10-20 min)
+        2. Remove jewelry/tight clothing
+        3. Cover with sterile gauze
+        4. DO NOT apply ice or butter
+        5. Take pain reliever if needed
+
+        🚨 For severe burns, call emergency immediately
+
+  utter_first_aid_sprains:
+    - text: |
+        **First Aid for Sprains:**
+
+        R.I.C.E Method:
+        1. **Rest** the injured area
+        2. **Ice** for 20 min every 2-3 hours
+        3. **Compression** with bandage
+        4. **Elevation** above heart level
+
+        🚨 See doctor if severe pain or inability to bear weight
+
+  utter_find_hospital:
+    - text: |
+        **Finding Nearest Hospital:**
+
+        Please share your location or city name.
+
+        **Emergency Numbers:**
+        🚑 Ambulance: 108
+        📞 Medical Helpline: 104
+        🆘 Emergency: 112
+
+        For immediate help, call these numbers!
+
+  utter_hospital_info:
+    - text: |
+        **Hospitals near {user_location}:**
+
+        Based on government database:
+        • District Hospital
+        • Primary Health Center
+        • Community Health Center
+
+        **Private Hospitals:**
+        • Check Google Maps for nearest
+
+        Emergency: Call 108 for ambulance
+
+  utter_medicine_dosage:
+    - text: |
+        **General Medicine Dosage Guidelines:**
+
+        **Paracetamol:** 500-650mg every 4-6 hours
+        **Ibuprofen:** 400mg every 6-8 hours
+        **ORS:** 1 packet in 1 liter water
+        **Antacid:** As needed after meals
+
+        ⚠️ Always follow doctor's prescription
+        ⚠️ Dosage varies by age and weight
+
+        Never self-medicate for serious conditions!
+
+  utter_emergency_response:
+    - text: |
+        🚨 **MEDICAL EMERGENCY HELP:**
+
+        **Call Immediately:**
+        • Ambulance: 108
+        • Emergency: 112
+
+        **While waiting:**
+        • Stay calm
+        • Don't move the patient unnecessarily
+        • Keep airway clear
+        • Note symptoms and time
+
+        Help is on the way!
+
+  utter_disclaimer:
+    - text: "⚠️ **Disclaimer:** This is AI-based guidance only. Always consult qualified healthcare professionals for medical advice, diagnosis, or treatment."
+
+  utter_thank_response:
+    - text: "You're welcome! Stay healthy and don't hesitate to seek professional medical help when needed."
+    - text: "Happy to help! Remember, your health is important. Take care!"
+
+actions:
+  - action_diagnose_symptoms
+  - action_verify_disease
+  - action_provide_treatment
+  - action_find_nearest_hospital
+  - action_check_symptoms_count
+  - action_provide_disease_details
+  - action_emergency_protocol
 
 session_config:
-  session_exDengupiration_time: 60
+  session_expiration_time: 60
   carry_over_slots_to_new_session: true

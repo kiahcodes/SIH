@@ -1,81 +1,34 @@
 version: "3.1"
 
 rules:
-  # Greeting Rule
-  - rule: Say hello when greeted
+  - rule: Always respond to greetings
     steps:
       - intent: greet
       - action: utter_greet
 
-  # Goodbye Rule
-  - rule: Say goodbye when user says bye
+  - rule: Always respond to goodbyes
     steps:
       - intent: goodbye
       - action: utter_goodbye
 
-  # Bot challenge rule
-  - rule: Answer when asked if bot
+  - rule: Always respond to bot challenge
     steps:
       - intent: bot_challenge
       - action: utter_iamabot
 
-  # Happy mood rule
-  - rule: Respond to happy mood
+  - rule: Always respond to thank you
     steps:
-      - intent: mood_great
-      - action: utter_happy
+      - intent: thank_you
+      - action: utter_thank_response
 
-  # Unhappy mood rule
-  - rule: Respond to unhappy mood
+  - rule: Emergency help always triggers emergency response
     steps:
-      - intent: mood_unhappy
-      - action: utter_cheer_up
-      - action: utter_did_that_help
+      - intent: emergency_help
+      - action: utter_emergency_response
+      - action: action_emergency_protocol
 
-  # Affirmation rule
-  - rule: User affirms after cheer up
+  - rule: Reset conversation on new greeting after goodbye
     steps:
-      - intent: affirm
-      - action: utter_happy
-
-  # Denial rule
-  - rule: User denies after cheer up
-    steps:
-      - intent: deny
       - action: utter_goodbye
-
-  # Healthcare disease rules
-  - rule: Provide info about malaria
-    steps:
-      - intent: ask_malaria
-      - action: utter_malaria
-
-  - rule: Provide info about dengue
-    steps:
-      - intent: ask_dengue
-      - action: utter_dengue
-
-  - rule: Provide info about typhoid
-    steps:
-      - intent: ask_typhoid
-      - action: utter_typhoid
-
-  - rule: Provide info about cholera
-    steps:
-      - intent: ask_cholera
-      - action: utter_cholera
-
-  - rule: Provide info about covid
-    steps:
-      - intent: ask_covid
-      - action: utter_covid
-
-  - rule: Provide info about flu
-    steps:
-      - intent: ask_flu
-      - action: utter_flu
-
-  - rule: Provide info about measles
-    steps:
-      - intent: ask_measles
-      - action: utter_measles
+      - intent: greet
+      - action: utter_greet

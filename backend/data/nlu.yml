@@ -1,99 +1,589 @@
+# version: "3.1"
+
+# nlu:
+#   - intent: greet
+#     examples: |
+#       - hello
+#       - hi
+#       - namaste
+#       - hey
+
+#   - intent: goodbye
+#     examples: |
+#       - bye
+#       - goodbye
+#       - see you
+#       - bye-bye
+
+#   - intent: affirm
+#     examples: |
+#       - yes
+#       - correct
+#       - absolutely
+#       - sure
+
+#   - intent: deny
+#     examples: |
+#       - no
+#       - not really
+#       - never
+#       - I don’t think so
+
+#   - intent: mood_great
+#     examples: |
+#       - I am fine
+#       - feeling good
+#       - amazing
+#       - great
+
+#   - intent: mood_unhappy
+#     examples: |
+#       - not good
+#       - feeling sick
+#       - very terrible
+#       - I feel weak
+
+#   - intent: bot_challenge
+#     examples: |
+#       - are you a bot?
+#       - are you real?
+#       - who are you?
+
+#   - intent: ask_malaria
+#     examples: |
+#       - tell me about malaria
+#       - what is malaria
+#       - how does malaria spread
+#       - malaria precautions
+
+#   - intent: ask_dengue
+#     examples: |
+#       - tell me about dengue
+#       - what is dengue
+#       - dengue symptoms
+#       - how to prevent dengue
+
+#   - intent: ask_typhoid
+#     examples: |
+#       - what is typhoid
+#       - tell me about typhoid
+#       - typhoid precautions
+#       - how does typhoid spread
+
+#   - intent: ask_cholera
+#     examples: |
+#       - what is cholera
+#       - cholera symptoms
+#       - how cholera spreads
+#       - cholera precautions
+
+#   - intent: ask_covid
+#     examples: |
+#       - tell me about covid
+#       - what is coronavirus
+#       - how to protect from covid
+#       - covid symptoms
+
+#   - intent: ask_flu
+#     examples: |
+#       - what is flu
+#       - flu symptoms
+#       - common cold and flu
+#       - how to prevent flu
+
+#   - intent: ask_measles
+#     examples: |
+#       - what is measles
+#       - measles symptoms
+#       - measles in children
+#       - measles prevention
 version: "3.1"
 
 nlu:
   - intent: greet
     examples: |
+      - hey
       - hello
       - hi
+      - hello there
+      - good morning
+      - good evening
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
       - namaste
-      - hey
+      - namaskar
 
   - intent: goodbye
     examples: |
+      - good by
+      - cee you later
+      - good night
       - bye
       - goodbye
-      - see you
-      - bye-bye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+      - talk to you later
+      - ttyl
+      - catch you later
 
   - intent: affirm
     examples: |
       - yes
+      - y
+      - indeed
+      - of course
+      - that sounds good
       - correct
-      - absolutely
       - sure
+      - ok
+      - okay
+      - yeah
+      - yep
+      - right
+      - affirmative
+      - definitely
+      - let's do it
+      - yeah sure
+      - exactly
+      - absolutely
+      - haan
+      - ha
 
   - intent: deny
     examples: |
       - no
-      - not really
+      - n
       - never
-      - I don’t think so
+      - I don't think so
+      - don't like that
+      - no way
+      - not really
+      - nope
+      - no thanks
+      - not interested
+      - definitely not
+      - no I don't
+      - I disagree
+      - nahi
+      - na
 
   - intent: mood_great
     examples: |
-      - I am fine
-      - feeling good
-      - amazing
+      - perfect
       - great
+      - amazing
+      - feeling like a king
+      - wonderful
+      - I am feeling very good
+      - I am great
+      - I am amazing
+      - I am going to save the world
+      - super stoked
+      - extremely good
+      - so so perfect
+      - so good
+      - so perfect
+      - I'm fine
+      - I'm good
 
   - intent: mood_unhappy
     examples: |
+      - my day was horrible
+      - I am sad
+      - I don't feel very well
+      - I am disappointed
+      - super sad
+      - I'm so sad
+      - sad
+      - very sad
+      - unhappy
       - not good
-      - feeling sick
-      - very terrible
-      - I feel weak
+      - not very good
+      - extremly sad
+      - so saad
+      - so sad
+      - I'm sick
+      - I feel unwell
+      - not feeling good
 
   - intent: bot_challenge
     examples: |
       - are you a bot?
-      - are you real?
+      - are you a human?
+      - am I talking to a bot?
+      - am I talking to a human?
+      - what are you?
       - who are you?
+      - are you real?
 
-  - intent: ask_malaria
+  - intent: report_symptoms
     examples: |
-      - tell me about malaria
-      - what is malaria
-      - how does malaria spread
-      - malaria precautions
+      - I have [fever](symptom)
+      - I'm experiencing [headache](symptom)
+      - I have [cough](symptom) and [cold](symptom)
+      - suffering from [body pain](symptom)
+      - I have [nausea](symptom) and [vomiting](symptom)
+      - feeling [dizzy](symptom)
+      - I have [diarrhea](symptom)
+      - experiencing [chest pain](symptom)
+      - I have [high fever](symptom) with [chills](symptom)
+      - I'm having [breathing difficulty](symptom)
+      - I have [stomach ache](symptom)
+      - suffering from [back pain](symptom)
+      - I have [sore throat](symptom)
+      - experiencing [fatigue](symptom) and [weakness](symptom)
+      - I want to report my symptoms
+      - I'm not feeling well
+      - I'm sick
+      - I have some symptoms
+      - check my symptoms
+      - I need diagnosis
+      - feeling [feverish](symptom)
+      - having [muscle pain](symptom)
+      - [rashes](symptom) on my skin
+      - [bleeding](symptom) from nose
 
-  - intent: ask_dengue
+  - intent: single_symptom
     examples: |
-      - tell me about dengue
-      - what is dengue
-      - dengue symptoms
-      - how to prevent dengue
+      - just [fever](symptom)
+      - only [headache](symptom)
+      - [cough](symptom) only
+      - just feeling [tired](symptom)
+      - only have [nausea](symptom)
+      - [dizziness](symptom) that's all
+      - just [vomiting](symptom)
+      - only [body pain](symptom)
 
-  - intent: ask_typhoid
+  - intent: multiple_symptoms
     examples: |
-      - what is typhoid
-      - tell me about typhoid
-      - typhoid precautions
-      - how does typhoid spread
+      - I have [fever](symptom), [headache](symptom) and [body pain](symptom)
+      - experiencing [cough](symptom), [cold](symptom) and [sore throat](symptom)
+      - [nausea](symptom), [vomiting](symptom) and [diarrhea](symptom)
+      - having [chest pain](symptom) with [breathing problems](symptom)
+      - [high fever](symptom), [chills](symptom) and [sweating](symptom)
+      - yes I also have [headache](symptom) and [nausea](symptom)
+      - additionally [body pain](symptom) and [weakness](symptom)
+      - also experiencing [dizziness](symptom) and [fatigue](symptom)
 
-  - intent: ask_cholera
+  - intent: ask_disease_info
     examples: |
-      - what is cholera
-      - cholera symptoms
-      - how cholera spreads
-      - cholera precautions
+      - tell me about [malaria](disease)
+      - what is [diabetes](disease)
+      - information about [hypertension](disease)
+      - explain [cholera](disease)
+      - what are the symptoms of [cancer](disease)
+      - [dengue](disease) information
+      - tell me about [typhoid](disease)
+      - what causes [tuberculosis](disease)
+      - [COVID-19](disease) details
+      - information on [pneumonia](disease)
+      - what is [blood pressure](disease)
+      - tell me about [cholesterol](disease)
+      - [jaundice](disease) symptoms
+      - what is [anemia](disease)
 
-  - intent: ask_covid
+  - intent: check_disease
     examples: |
-      - tell me about covid
-      - what is coronavirus
-      - how to protect from covid
-      - covid symptoms
+      - I think I have [malaria](disease)
+      - do I have [diabetes](disease)?
+      - I might have [dengue](disease)
+      - check if I have [typhoid](disease)
+      - I suspect [COVID-19](disease)
+      - could this be [pneumonia](disease)?
+      - am I suffering from [hypertension](disease)?
+      - I want to check for [diabetes](disease)
+      - verify if I have [malaria](disease)
+      - I believe I have [cholera](disease)
 
-  - intent: ask_flu
+  - intent: confirm_disease
     examples: |
-      - what is flu
-      - flu symptoms
-      - common cold and flu
-      - how to prevent flu
+      - yes I have those symptoms
+      - yes these match
+      - exactly these symptoms
+      - yes I'm experiencing all of these
+      - that's correct
+      - yes confirmed
+      - these symptoms match mine
+      - yes I have this disease
 
-  - intent: ask_measles
+  - intent: deny_disease
     examples: |
-      - what is measles
-      - measles symptoms
-      - measles in children
-      - measles prevention
+      - no I don't have these symptoms
+      - these don't match
+      - no different symptoms
+      - not experiencing these
+      - that's not correct
+      - no not confirmed
+      - symptoms don't match
+
+  - intent: ask_treatment
+    examples: |
+      - what is the treatment for [malaria](disease)
+      - how to cure [diabetes](disease)
+      - treatment for [fever](symptom)
+      - medicine for [headache](symptom)
+      - cure for [cold](symptom) and [cough](symptom)
+      - how to treat [diarrhea](symptom)
+      - what medicine for [hypertension](disease)
+      - treatment options for [cancer](disease)
+      - suggest treatment
+      - what medicines should I take
+      - prescribe medicine
+      - suggest cure
+
+  - intent: ask_causes
+    examples: |
+      - what causes [malaria](disease)
+      - why does [diabetes](disease) occur
+      - causes of [hypertension](disease)
+      - how does [cholera](disease) spread
+      - reason for [fever](symptom)
+      - what leads to [cancer](disease)
+      - causes of disease
+      - why do people get sick
+      - how did I get this disease
+
+  - intent: ask_precautions
+    examples: |
+      - how to prevent [malaria](disease)
+      - precautions for [diabetes](disease)
+      - prevention of [cholera](disease)
+      - how to avoid [dengue](disease)
+      - safety measures for [COVID-19](disease)
+      - prevention tips
+      - how to stay safe
+      - preventive measures
+      - how to avoid getting sick
+      - precautionary steps
+
+  - intent: ask_ayurvedic_remedy
+    examples: |
+      - ayurvedic treatment for [diabetes](disease)
+      - herbal remedy for [fever](symptom)
+      - natural cure for [cough](symptom)
+      - ayurvedic medicine for [malaria](disease)
+      - home remedy for [cold](symptom)
+      - traditional treatment
+      - natural healing
+      - ayurvedic suggestions
+      - herbal medicine
+      - gharelu nuskhe
+      - desi ilaj
+
+  - intent: find_hospital
+    examples: |
+      - find nearest hospital
+      - hospital near me
+      - closest medical facility
+      - where is the nearest clinic
+      - emergency hospital nearby
+      - find doctor near me
+      - hospital in [Ahmedabad](location)
+      - medical center in [Delhi](location)
+      - nearest hospital to [Mumbai](location)
+      - find hospital
+      - need hospital address
+      - hospital contact
+
+  - intent: emergency_help
+    examples: |
+      - emergency
+      - urgent help needed
+      - medical emergency
+      - need ambulance
+      - serious condition
+      - critical situation
+      - help immediately
+      - SOS
+      - need doctor urgently
+      - emergency situation
+      - call ambulance
+      - urgent medical attention
+
+  - intent: pregnancy_care
+    examples: |
+      - pregnancy care tips
+      - pregnant women safety
+      - [first trimester](trimester) care
+      - [second trimester](trimester) guidelines
+      - [third trimester](trimester) precautions
+      - pregnancy health advice
+      - prenatal care
+      - maternity guidance
+      - expecting mother tips
+      - pregnancy diet
+      - pregnancy exercise
+
+  - intent: newborn_care
+    examples: |
+      - newborn baby care
+      - infant care tips
+      - baby hygiene
+      - newborn feeding
+      - baby safety measures
+      - infant health
+      - baby care guidelines
+      - newborn precautions
+      - baby immunization
+      - infant feeding schedule
+      - baby health tips
+
+  - intent: first_aid
+    examples: |
+      - first aid for [cuts](injury_type)
+      - how to treat [burns](injury_type)
+      - first aid for [sprains](injury_type)
+      - emergency treatment for [wounds](injury_type)
+      - immediate help for [injury](injury_type)
+      - first aid tips
+      - emergency first aid
+      - accident treatment
+      - injury care
+      - wound management
+      - burn treatment
+      - cut treatment
+
+  - intent: ask_medicine_dosage
+    examples: |
+      - dosage for [paracetamol](medicine)
+      - how much [ibuprofen](medicine) to take
+      - [antibiotic](medicine) dosage
+      - medicine dose for [fever](symptom)
+      - how to take [metformin](medicine)
+      - dosage instructions
+      - medicine quantity
+      - how many tablets
+      - medicine frequency
+      - when to take medicine
+
+  - intent: provide_symptom_details
+    examples: |
+      - [fever](symptom) since 3 days
+      - severe [headache](symptom)
+      - mild [cough](symptom)
+      - continuous [vomiting](symptom)
+      - [pain](symptom) in [chest](body_part)
+      - [swelling](symptom) in [legs](body_part)
+      - [rashes](symptom) on [arms](body_part)
+      - high [temperature](symptom)
+      - frequent [urination](symptom)
+
+  - intent: provide_location
+    examples: |
+      - I'm in [Ahmedabad](location)
+      - location is [Mumbai](location)
+      - [Delhi](location)
+      - I live in [Bangalore](location)
+      - from [Chennai](location)
+      - [Kolkata](location) area
+      - near [Pune](location)
+      - [Gujarat](location) state
+      - [Maharashtra](location)
+
+  - intent: thank_you
+    examples: |
+      - thanks
+      - thank you
+      - that's helpful
+      - thanks for the help
+      - thank you so much
+      - thanks a lot
+      - great thanks
+      - appreciate it
+      - dhanyawad
+      - shukriya
+
+  - lookup: symptom
+    examples: |
+      - fever
+      - headache
+      - cough
+      - cold
+      - body pain
+      - nausea
+      - vomiting
+      - diarrhea
+      - fatigue
+      - weakness
+      - dizziness
+      - chest pain
+      - breathing difficulty
+      - sore throat
+      - rashes
+      - swelling
+      - back pain
+      - stomach ache
+      - muscle pain
+      - joint pain
+      - chills
+      - sweating
+
+  - lookup: disease
+    examples: |
+      - malaria
+      - diabetes
+      - hypertension
+      - cholera
+      - cancer
+      - dengue
+      - typhoid
+      - tuberculosis
+      - COVID-19
+      - pneumonia
+      - jaundice
+      - anemia
+      - blood pressure
+      - cholesterol
+      - asthma
+      - bronchitis
+      - hepatitis
+
+  - lookup: medicine
+    examples: |
+      - paracetamol
+      - ibuprofen
+      - aspirin
+      - antibiotic
+      - metformin
+      - insulin
+      - amlodipine
+      - atenolol
+      - chloroquine
+      - doxycycline
+      - amoxicillin
+      - azithromycin
+      - omeprazole
+
+  - lookup: body_part
+    examples: |
+      - head
+      - chest
+      - stomach
+      - back
+      - legs
+      - arms
+      - throat
+      - nose
+      - eyes
+      - ears
+      - neck
+      - abdomen
+      - joints
+      - muscles
+
+  - lookup: injury_type
+    examples: |
+      - cuts
+      - wounds
+      - burns
+      - sprains
+      - fractures
+      - bruises
+      - bleeding
+      - injury
