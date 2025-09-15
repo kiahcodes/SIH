@@ -1,94 +1,3 @@
-# version: "3.1"
-
-# intents:
-#   - greet
-#   - goodbye
-#   - affirm
-#   - deny
-#   - mood_great
-#   - mood_unhappy
-#   - bot_challenge
-#   - ask_malaria
-#   - ask_dengue
-#   - ask_typhoid
-#   - ask_cholera
-#   - ask_covid
-#   - ask_flu
-#   - ask_measles
-
-# responses:
-#   utter_greet:
-#     - text: "Namaste! How are you feeling today?"
-
-#   utter_cheer_up:
-#     - text: "Don't worry, I am here to help. Stay strong."
-#       image: "https://i.imgur.com/nGF1K8f.jpg"
-
-#   utter_did_that_help:
-#     - text: "Did that make you feel better?"
-
-#   utter_happy:
-#     - text: "Great! Stay healthy and safe."
-
-#   utter_goodbye:
-#     - text: "Take care! Goodbye."
-
-#   utter_iamabot:
-#     - text: "Yes, I am your healthcare helper bot."
-
-#   ## Healthcare responses
-#   utter_malaria:
-#     - text: |
-#         Malaria
-#         -Cause: Bite of infected female Anopheles mosquito.
-#         - Symptoms: High fever, chills, sweating, headache.
-#         - Precautions: Sleep under mosquito nets, keep surroundings clean, use mosquito repellents.
-
-#   utter_dengue:
-#     - text: |
-#         Dengue
-#         - Cause: Aedes aegypti mosquito bite.
-#         - Symptoms: High fever, severe body pain, rashes, bleeding gums/nose.
-#         - Precautions: Remove stagnant water, wear full clothes, avoid mosquito breeding.
-
-#   utter_typhoid:
-#     - text: |
-#         Typhoid
-#         - Cause: Contaminated food and water (Salmonella bacteria).
-#         - Symptoms: High fever, weakness, stomach pain, loss of appetite.
-#         - Precautions: Drink clean boiled water, wash hands, eat home-cooked hygienic food.
-
-#   utter_cholera:
-#     - text: |
-#         Cholera
-#         - Cause: Drinking water contaminated with *Vibrio cholerae* bacteria.
-#         - Symptoms: Severe watery diarrhea, vomiting, dehydration.
-#         - **Precautions**: Use clean drinking water, wash hands, cook food properly.
-
-#   utter_covid:
-#     - text: |
-#         COVID-19
-#         - Cause: Coronavirus (spread by droplets).
-#         - Symptoms: Fever, cough, breathing difficulty, loss of taste/smell.
-#         - Precautions: Wear mask, wash hands, maintain distance, get vaccinated.
-
-#   utter_flu:
-#     - text: |
-#         Seasonal Flu
-#         - Cause: Influenza virus.
-#         - Symptoms: Fever, cold, cough, body pain.
-#         - Precautions: Rest, drink fluids, cover mouth while coughing, avoid close contact.
-
-#   utter_measles:
-#     - text: |
-#         Measles
-#         - Cause: Measles virus (highly contagious).
-#         - Symptoms: Fever, cough, red eyes, red rash all over body.
-#         - Precautions: Vaccination (MMR), avoid contact with infected persons.
-
-# session_config:
-#   session_exDengupiration_time: 60
-#   carry_over_slots_to_new_session: true
 version: "3.1"
 
 intents:
@@ -207,13 +116,13 @@ responses:
     - text: "Based on the symptom '{symptom_list}', here are possible conditions:\n• Malaria\n• Viral fever\n• Common cold\n• Dengue\n• Typhoid\n\nDo you have any other symptoms to narrow down the diagnosis?"
 
   utter_provide_diagnosis:
-    - text: "Based on your symptoms: {symptom_list}\n\nMost probable conditions:\n1. **Malaria** - High probability if you have fever with chills\n2. **Viral infection** - Common with these symptoms\n3. **Dengue** - Possible if in endemic area\n\n⚠️ Please consult a doctor for proper diagnosis and treatment."
+    - text: "Based on your symptoms: {symptom_list}\n\nMost probable conditions:\n1. Malaria - High probability if you have fever with chills\n2. Viral infection - Common with these symptoms\n3. Dengue - Possible if in endemic area\n\n⚠️ Please consult a doctor for proper diagnosis and treatment."
 
   utter_disease_info_malaria:
     - text: |
-        **MALARIA - Complete Information:**
+        MALARIA - Complete Information:
 
-        **Symptoms:**
+        Symptoms:
         • High fever with chills
         • Sweating
         • Headache
@@ -221,95 +130,95 @@ responses:
         • Muscle pain
         • Fatigue
 
-        **Causes:** Plasmodium parasites transmitted by infected mosquitoes
+        Causes: Plasmodium parasites transmitted by infected mosquitoes
 
-        **Treatment:**
+        Treatment:
         • Chloroquine (500mg initially, then as prescribed)
         • Artemisinin-based therapy
         • Primaquine for P. vivax
 
-        **Precautions:**
+        Precautions:
         • Use mosquito nets
         • Apply insect repellent
         • Eliminate standing water
 
-        **Ayurvedic:** Neem, Tulsi, Giloy
+        Ayurvedic: Neem, Tulsi, Giloy
 
   utter_disease_info_diabetes:
     - text: |
-        **DIABETES - Complete Information:**
+        DIABETES - Complete Information:
 
-        **Symptoms:**
+        Symptoms:
         • Increased thirst and urination
         • Unexplained weight loss
         • Fatigue
         • Blurred vision
         • Slow healing wounds
 
-        **Causes:** 
+        Causes:
         • Type 1: Autoimmune
         • Type 2: Insulin resistance
 
-        **Treatment:**
+        Treatment:
         • Metformin (500-2000mg daily)
         • Insulin therapy
         • Blood sugar monitoring
 
-        **Precautions:**
+        Precautions:
         • Maintain healthy weight
         • Regular exercise
         • Balanced diet
 
-        **Ayurvedic:** Bitter gourd, Fenugreek, Jamun
+        Ayurvedic: Bitter gourd, Fenugreek, Jamun
 
   utter_disease_info_hypertension:
     - text: |
-        **HYPERTENSION - Complete Information:**
+        HYPERTENSION - Complete Information:
 
-        **Symptoms:**
+        Symptoms:
         • Headache
         • Shortness of breath
         • Nosebleeds
         • Chest pain
         • Dizziness
 
-        **Causes:** High salt intake, obesity, stress, genetics
+        Causes: High salt intake, obesity, stress, genetics
 
-        **Treatment:**
+        Treatment:
         • Amlodipine (5-10mg daily)
         • Atenolol (25-100mg daily)
         • Lifestyle modifications
 
-        **Precautions:**
+        Precautions:
         • Reduce salt intake
         • Exercise regularly
         • Manage stress
 
-        **Ayurvedic:** Arjuna bark, Ashwagandha, Garlic
+        Ayurvedic: Arjuna bark, Ashwagandha, Garlic
 
   utter_disease_info_cholera:
     - text: |
-        **CHOLERA - Complete Information:**
+        CHOLERA - Complete Information:
 
-        **Symptoms:**
+        Symptoms:
         • Severe watery diarrhea
         • Vomiting
         • Dehydration
         • Muscle cramps
 
-        **Causes:** Vibrio cholerae bacteria from contaminated water
+        Causes: Vibrio cholerae bacteria from contaminated water
 
-        **Treatment:**
+        Treatment:
         • ORS (Oral Rehydration Solution)
         • IV fluids for severe cases
         • Doxycycline 300mg single dose
 
-        **Precautions:**
+        Precautions:
         • Drink safe water
         • Proper sanitation
         • Hand hygiene
 
-        **Ayurvedic:** Kutaja, Bilva, stay hydrated
+        Ayurvedic: Kutaja, Bilva, stay hydrated
 
   utter_ask_which_disease:
     - text: "Which disease would you like to know about? I can provide information on:\n• Malaria\n• Diabetes\n• Hypertension\n• Cholera\n• Cancer\n• Diarrhea\nAnd many others."
@@ -320,14 +229,14 @@ responses:
 
   utter_treatment_info:
     - text: |
-        **Treatment for {suspected_disease}:**
+        Treatment for {suspected_disease}:
 
-        **Medical Treatment:**
+        Medical Treatment:
         • Primary medication as per severity
         • Supportive care
         • Regular monitoring
 
-        **Dosage Guidelines:**
+        Dosage Guidelines:
         • Follow prescription strictly
         • Complete full course
         • Take with food if advised
@@ -336,37 +245,37 @@ responses:
 
   utter_ayurvedic_remedies:
     - text: |
-        **Ayurvedic Remedies:**
+        Ayurvedic Remedies:
 
-        **For Immunity:** Tulsi, Ashwagandha, Giloy
-        **For Digestion:** Triphala, Ginger, Ajwain
-        **For Respiratory:** Mulethi, Vasaka, Turmeric
-        **For Diabetes:** Bitter gourd, Fenugreek
-        **For Joint Pain:** Shallaki, Guggulu
+        For Immunity: Tulsi, Ashwagandha, Giloy
+        For Digestion: Triphala, Ginger, Ajwain
+        For Respiratory: Mulethi, Vasaka, Turmeric
+        For Diabetes: Bitter gourd, Fenugreek
+        For Joint Pain: Shallaki, Guggulu
 
         🌿 Use under guidance of Ayurvedic practitioner
 
   utter_pregnancy_care:
     - text: |
-        **Pregnancy Care Guidelines:**
+        Pregnancy Care Guidelines:
 
-        **First Trimester (Weeks 1-12):**
+        First Trimester (Weeks 1-12):
         • Take folic acid (400mcg daily)
         • Avoid alcohol and smoking
         • Gentle exercise
         • Manage morning sickness
 
-        **Second Trimester (Weeks 13-27):**
+        Second Trimester (Weeks 13-27):
         • Regular checkups
         • Balanced nutrition
         • Monitor baby movements
 
-        **Third Trimester (Weeks 28-40):**
+        Third Trimester (Weeks 28-40):
         • Prepare for delivery
         • Practice breathing exercises
         • Monitor contractions
 
-        **Safety Tips:**
+        Safety Tips:
         • Avoid heavy lifting
         • Sleep on left side
         • Stay hydrated
@@ -374,25 +283,25 @@ responses:
 
   utter_newborn_care:
     - text: |
-        **Newborn Baby Care:**
+        Newborn Baby Care:
 
-        **Hygiene:**
+        Hygiene:
         • Wash hands before handling
         • Keep umbilical cord dry
         • Bathe with warm water
 
-        **Feeding:**
+        Feeding:
         • Breastfeed every 2-3 hours
         • Ensure proper latching
         • Burp after feeding
 
-        **Safety:**
+        Safety:
         • Sleep on back
         • Room temperature 68-72°F
         • No loose bedding
         • Regular checkups
 
-        **Rural Area Tips:**
+        Rural Area Tips:
         • Boil water for cleaning
         • Keep baby warm
         • Ensure ventilation
@@ -400,7 +309,7 @@ responses:
 
   utter_first_aid_cuts:
     - text: |
-        **First Aid for Cuts/Wounds:**
+        First Aid for Cuts/Wounds:
 
         1. Clean wound with water
         2. Apply pressure to stop bleeding
@@ -412,7 +321,7 @@ responses:
 
   utter_first_aid_burns:
     - text: |
-        **First Aid for Burns:**
+        First Aid for Burns:
 
         1. Cool with running water (10-20 min)
         2. Remove jewelry/tight clothing
@@ -424,23 +333,23 @@ responses:
 
   utter_first_aid_sprains:
     - text: |
-        **First Aid for Sprains:**
+        First Aid for Sprains:
 
         R.I.C.E Method:
-        1. **Rest** the injured area
-        2. **Ice** for 20 min every 2-3 hours
-        3. **Compression** with bandage
-        4. **Elevation** above heart level
+        1. Rest the injured area
+        2. Ice for 20 min every 2-3 hours
+        3. Compression with bandage
+        4. Elevation above heart level
 
         🚨 See doctor if severe pain or inability to bear weight
 
   utter_find_hospital:
     - text: |
-        **Finding Nearest Hospital:**
+        Finding Nearest Hospital:
 
         Please share your location or city name.
 
-        **Emergency Numbers:**
+        Emergency Numbers:
         🚑 Ambulance: 108
         📞 Medical Helpline: 104
         🆘 Emergency: 112
@@ -449,26 +358,26 @@ responses:
 
   utter_hospital_info:
     - text: |
-        **Hospitals near {user_location}:**
+        Hospitals near {user_location}:
 
         Based on government database:
         • District Hospital
         • Primary Health Center
         • Community Health Center
 
-        **Private Hospitals:**
+        Private Hospitals:
         • Check Google Maps for nearest
 
         Emergency: Call 108 for ambulance
 
   utter_medicine_dosage:
     - text: |
-        **General Medicine Dosage Guidelines:**
+        General Medicine Dosage Guidelines:
 
-        **Paracetamol:** 500-650mg every 4-6 hours
-        **Ibuprofen:** 400mg every 6-8 hours
-        **ORS:** 1 packet in 1 liter water
-        **Antacid:** As needed after meals
+        Paracetamol: 500-650mg every 4-6 hours
+        Ibuprofen: 400mg every 6-8 hours
+        ORS: 1 packet in 1 liter water
+        Antacid: As needed after meals
 
         ⚠️ Always follow doctor's prescription
         ⚠️ Dosage varies by age and weight
@@ -477,13 +386,13 @@ responses:
 
   utter_emergency_response:
     - text: |
-        🚨 **MEDICAL EMERGENCY HELP:**
+        🚨 MEDICAL EMERGENCY HELP:
 
-        **Call Immediately:**
+        Call Immediately:
         • Ambulance: 108
         • Emergency: 112
 
-        **While waiting:**
+        While waiting:
         • Stay calm
         • Don't move the patient unnecessarily
         • Keep airway clear
@@ -492,7 +401,7 @@ responses:
         Help is on the way!
 
   utter_disclaimer:
-    - text: "⚠️ **Disclaimer:** This is AI-based guidance only. Always consult qualified healthcare professionals for medical advice, diagnosis, or treatment."
+    - text: "⚠️ Disclaimer: This is AI-based guidance only. Always consult qualified healthcare professionals for medical advice, diagnosis, or treatment."
 
   utter_thank_response:
     - text: "You're welcome! Stay healthy and don't hesitate to seek professional medical help when needed."

@@ -1,0 +1,2 @@
+uvicorn middleware:app --reload --port 8001
+rasa run --enable-api --cors "*" --port 5005
